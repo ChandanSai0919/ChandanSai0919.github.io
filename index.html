@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chandan Sai Vanimireddy — Data Analyst</title>
@@ -85,7 +86,7 @@
   #top-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0f19;border:none;border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
   #top-btn.show{opacity:1;pointer-events:auto}
 </style>
-<script src="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/recordConsoleEvents.js"></script></head>
+</head>
 <body>
 <header>
   <nav>
@@ -109,11 +110,10 @@
   <div class="cta">
     <a class="btn" href="#projects">View my work</a>
     <a class="btn ghost" href="#contact">Get in touch</a>
-    <button class="btn ghost" id="download-page" style="cursor:pointer;font-family:inherit">Download page (index.html)</button>
   </div>
 </section>
 
-<section id="about" class="reveal from-bottom visible">
+<section id="about" class="reveal from-bottom">
   <h2>About Me</h2>
   <p class="sub">Data Analyst Fresher · Hyderabad, Telangana</p>
   <p style="max-width:760px">I'm an aspiring Data Analyst with hands-on experience in data analysis, visualization, and dashboard building, gained through internships at Purple Technologies and Black Bucks. I enjoy digging into raw data, finding the story behind the numbers, and presenting it in a way that drives decisions.</p>
@@ -132,7 +132,7 @@
         <li>Generated insights on top products and revenue trends</li>
       </ul>
       <span class="tag">MySQL</span><span class="tag">SQL</span>
-      <div class="more">View full details →</div>
+      <div class="more">View full details &rarr;</div>
     </div>
     <div class="card" data-project="powerbi">
       <h3>Power BI Call Centre Dashboard</h3>
@@ -142,7 +142,7 @@
         <li>Implemented filters and visualizations for real-time monitoring</li>
       </ul>
       <span class="tag">Power BI</span><span class="tag">Dashboards</span>
-      <div class="more">View full details →</div>
+      <div class="more">View full details &rarr;</div>
     </div>
     <div class="card" data-project="churn">
       <h3>Customer Churn Analysis</h3>
@@ -152,7 +152,7 @@
         <li>Created visualizations to communicate insights effectively</li>
       </ul>
       <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
-      <div class="more">View full details →</div>
+      <div class="more">View full details &rarr;</div>
     </div>
     <div class="card" data-project="ids">
       <h3>Rule-Based Intrusion Detection System</h3>
@@ -162,7 +162,7 @@
         <li>Designed a dashboard for intrusion alerts</li>
       </ul>
       <span class="tag">Python</span><span class="tag">PyShark</span><span class="tag">Flask</span><span class="tag">ML</span>
-      <div class="more">View full details →</div>
+      <div class="more">View full details &rarr;</div>
     </div>
   </div>
 </section>
@@ -230,7 +230,7 @@
 
 <div class="modal-overlay" id="project-modal">
   <div class="modal" role="dialog" aria-modal="true">
-    <button class="m-close" id="m-close" title="Close">✕</button>
+    <button class="m-close" id="m-close" title="Close">&#10005;</button>
     <h2 id="m-title"></h2>
     <div class="m-sub" id="m-sub"></div>
     <p id="m-desc"></p>
@@ -242,8 +242,8 @@
   </div>
 </div>
 
-<footer>Built with n8n · <span id="year">2026</span></footer>
-<button id="top-btn" title="Back to top">↑</button>
+<footer>&copy; <span id="year"></span> Chandan Sai Vanimireddy</footer>
+<button id="top-btn" title="Back to top">&#8593;</button>
 
 <script>
   const obs = new IntersectionObserver(entries => {
@@ -259,17 +259,6 @@
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Self-download: save this exact page as a standalone index.html file
-  const dlBtn = document.getElementById('download-page');
-  if (dlBtn) dlBtn.addEventListener('click', () => {
-    const blob = new Blob(['<!DOCTYPE html>' + String.fromCharCode(10) + document.documentElement.outerHTML], { type: 'text/html' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'index.html';
-    a.click();
-    URL.revokeObjectURL(a.href);
-  });
-
   const projects = {
     myntra: {
       title: 'SQL Sales Analysis (Myntra DB)',
@@ -284,7 +273,7 @@
         'Translated query results into clear, decision-ready takeaways for pricing and inventory'
       ],
       tags: ['MySQL', 'SQL', 'Joins', 'Aggregations', 'Subqueries'],
-      github: 'https://github.com/chandansai-vanimireddy/myntra-sql-sales-analysis'
+      github: 'https://github.com/ChandanSai0919'
     },
     powerbi: {
       title: 'Power BI Call Centre Dashboard',
@@ -298,7 +287,7 @@
         'Used cards, charts, and matrix visuals so managers can spot issues at a glance'
       ],
       tags: ['Power BI', 'DAX', 'Dashboards', 'KPIs'],
-      github: 'https://github.com/chandansai-vanimireddy/powerbi-call-centre-dashboard'
+      github: 'https://github.com/ChandanSai0919'
     },
     churn: {
       title: 'Customer Churn Analysis',
@@ -312,7 +301,7 @@
         'Summarised actionable retention recommendations based on the highest-risk customer segments'
       ],
       tags: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'EDA'],
-      github: 'https://github.com/chandansai-vanimireddy/customer-churn-analysis'
+      github: 'https://github.com/ChandanSai0919'
     },
     ids: {
       title: 'Rule-Based Intrusion Detection System',
@@ -326,7 +315,7 @@
         'Combined cyber security domain knowledge with data analysis and full-stack Python skills'
       ],
       tags: ['Python', 'PyShark', 'Flask', 'Socket.IO', 'NSL-KDD', 'ML'],
-      github: 'https://github.com/chandansai-vanimireddy/rule-based-ids'
+      github: 'https://github.com/ChandanSai0919'
     }
   };
 
@@ -350,5 +339,5 @@
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
-
-</body></html>
+</body>
+</html>
