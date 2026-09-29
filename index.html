@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandan Sai Vanimireddy — Data Analyst</title>
+<style>
+  :root{
+    --bg:#0b0f19; --bg2:#111827; --card:#151c2c; --ink:#e8ecf4; --muted:#94a3b8;
+    --accent:#2dd4bf; --accent2:#34d399; --accent-soft:rgba(45,212,191,.12); --line:#24304a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(600px 300px at 15% 10%,rgba(56,189,248,.08),transparent),
+               radial-gradient(700px 350px at 85% 85%,rgba(129,140,248,.08),transparent)}
+  header{position:sticky;top:0;background:rgba(11,15,25,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:100}
+  nav{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
+  .logo{font-weight:700;font-size:1.1rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav ul{display:flex;gap:20px;list-style:none}
+  nav a{color:var(--muted);text-decoration:none;font-size:.92rem;transition:color .2s}
+  nav a:hover{color:var(--accent)}
+  section{max-width:1000px;margin:0 auto;padding:80px 24px;position:relative;z-index:1}
+  .hero{text-align:center;padding:130px 24px 100px}
+  .hero h1{font-size:2.9rem;margin-bottom:14px;animation:fadeUp .8s ease both}
+  .hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);font-size:1.15rem;max-width:580px;margin:0 auto 30px;animation:fadeUp .8s .15s ease both}
+  .hero .cta{animation:fadeUp .8s .3s ease both}
+  .btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0f19;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;transition:transform .2s, box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(56,189,248,.35)}
+  .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);margin-left:12px}
+  .avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:800;color:#0b0f19;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 0 4px var(--accent-soft),0 12px 30px rgba(45,212,191,.25);animation:fadeUp .7s ease both}
+  h2{font-size:1.8rem;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:32px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:transform .25s, box-shadow .25s, border-color .25s}
+  .card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 12px 32px rgba(56,189,248,.15)}
+  .card h3{margin-bottom:8px;font-size:1.05rem}
+  .card{cursor:pointer}
+  .card .more{color:var(--accent);font-size:.82rem;font-weight:600;margin-top:10px;display:inline-block}
+  .modal-overlay{position:fixed;inset:0;background:rgba(4,8,15,.8);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+  .modal-overlay.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--accent);border-radius:18px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:36px;position:relative;animation:fadeUp .35s ease both}
+  .modal h2{margin-bottom:4px}
+  .modal .m-sub{color:var(--accent);font-size:.88rem;font-weight:600;margin-bottom:18px}
+  .modal p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+  .modal ul{padding-left:20px;margin-bottom:18px}
+  .modal li{color:var(--muted);font-size:.92rem;margin-bottom:6px}
+  .modal .m-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;width:34px;height:34px;font-size:1rem;cursor:pointer;transition:all .2s}
+  .modal .m-close:hover{border-color:var(--accent);color:var(--accent)}
+  .modal .m-actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+  .modal .tag{margin-top:0}
+  .card p,.card li{color:var(--muted);font-size:.92rem}
+  .card ul{padding-left:18px;margin-top:6px}
+  .tag{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 12px;font-size:.78rem;margin:6px 6px 0 0}
+  .skills{display:flex;flex-wrap:wrap;gap:10px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-size:.9rem;transition:all .2s;cursor:default}
+  .skill:hover{background:var(--accent);color:#0b0f19;border-color:var(--accent);transform:translateY(-2px)}
+  .skills-title{margin:18px 0 10px;font-size:.95rem;color:var(--accent);font-weight:600}
+  .timeline{border-left:2px solid var(--line);padding-left:28px}
+  .tl-item{position:relative;margin-bottom:32px}
+  .tl-item::before{content:'';position:absolute;left:-36px;top:6px;width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 10px rgba(56,189,248,.6)}
+  .tl-item .when{color:var(--accent);font-size:.82rem;font-weight:600}
+  .tl-item h3{margin:4px 0}
+  .tl-item p{color:var(--muted);font-size:.92rem}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .cert{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;transition:transform .25s,border-color .25s}
+  .cert:hover{transform:translateY(-3px);border-color:var(--accent2)}
+  .cert .issuer{color:var(--accent2);font-size:.8rem;font-weight:600;margin-top:4px}
+  /* scroll-in slide animations */
+  .reveal{opacity:0;transform:translateX(-48px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.from-right{transform:translateX(48px)}
+  .reveal.from-bottom{transform:translateY(40px)}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal .card,.reveal .skill,.reveal .tl-item,.reveal .cert{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.visible .card,.reveal.visible .skill,.reveal.visible .tl-item,.reveal.visible .cert{opacity:1;transform:none}
+  .reveal.visible .card:nth-child(2),.reveal.visible .skill:nth-child(2),.reveal.visible .tl-item:nth-child(2),.reveal.visible .cert:nth-child(2){transition-delay:.08s}
+  .reveal.visible .card:nth-child(3),.reveal.visible .skill:nth-child(3),.reveal.visible .tl-item:nth-child(3),.reveal.visible .cert:nth-child(3){transition-delay:.16s}
+  .reveal.visible .card:nth-child(4),.reveal.visible .skill:nth-child(4),.reveal.visible .cert:nth-child(4){transition-delay:.24s}
+  .reveal.visible .skill:nth-child(n+5){transition-delay:.05s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  footer{border-top:1px solid var(--line);text-align:center;padding:32px;color:var(--muted);font-size:.85rem;position:relative;z-index:1}
+  .socials{display:flex;justify-content:center;gap:16px;margin-top:16px}
+  .socials a{color:var(--accent);text-decoration:none;font-weight:600}
+  #top-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0f19;border:none;border-radius:50%;width:46px;height:46px;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
+  #top-btn.show{opacity:1;pointer-events:auto}
+</style>
+<script src="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/recordConsoleEvents.js"></script></head>
+<body>
+<header>
+  <nav>
+    <div class="logo">CV</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Internships</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="avatar">CV</div>
+  <h1>Hi, I'm <span>Chandan Sai Vanimireddy</span></h1>
+  <p>Aspiring Data Analyst based in Hyderabad, with a strong foundation in Python, SQL, Power BI, and Machine Learning — turning data into actionable insights.</p>
+  <div class="cta">
+    <a class="btn" href="#projects">View my work</a>
+    <a class="btn ghost" href="#contact">Get in touch</a>
+    <button class="btn ghost" id="download-page" style="cursor:pointer;font-family:inherit">Download page (index.html)</button>
+  </div>
+</section>
+
+<section id="about" class="reveal from-bottom visible">
+  <h2>About Me</h2>
+  <p class="sub">Data Analyst Fresher · Hyderabad, Telangana</p>
+  <p style="max-width:760px">I'm an aspiring Data Analyst with hands-on experience in data analysis, visualization, and dashboard building, gained through internships at Purple Technologies and Black Bucks. I enjoy digging into raw data, finding the story behind the numbers, and presenting it in a way that drives decisions.</p>
+  <p style="max-width:760px;margin-top:14px">My core toolkit is Python, SQL, and Power BI, backed by Machine Learning fundamentals and a B.Tech in Computer Science (Cyber Security). That security background also lets me look at data with an eye for integrity and risk. I'm eager to deliver actionable insights for data-driven decisions in dynamic teams, and I'm currently open to Data Analyst opportunities.</p>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>Projects</h2>
+  <p class="sub">Things I've built and analysed</p>
+  <div class="grid">
+    <div class="card" data-project="myntra">
+      <h3>SQL Sales Analysis (Myntra DB)</h3>
+      <ul>
+        <li>Analysed e-commerce sales data using SQL</li>
+        <li>Applied JOIN, GROUP BY, and aggregate functions</li>
+        <li>Generated insights on top products and revenue trends</li>
+      </ul>
+      <span class="tag">MySQL</span><span class="tag">SQL</span>
+      <div class="more">View full details →</div>
+    </div>
+    <div class="card" data-project="powerbi">
+      <h3>Power BI Call Centre Dashboard</h3>
+      <ul>
+        <li>Built an interactive dashboard to track KPIs</li>
+        <li>Analysed call resolution and agent performance</li>
+        <li>Implemented filters and visualizations for real-time monitoring</li>
+      </ul>
+      <span class="tag">Power BI</span><span class="tag">Dashboards</span>
+      <div class="more">View full details →</div>
+    </div>
+    <div class="card" data-project="churn">
+      <h3>Customer Churn Analysis</h3>
+      <ul>
+        <li>Performed exploratory data analysis on customer data</li>
+        <li>Identified key churn factors using statistical methods</li>
+        <li>Created visualizations to communicate insights effectively</li>
+      </ul>
+      <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
+      <div class="more">View full details →</div>
+    </div>
+    <div class="card" data-project="ids">
+      <h3>Rule-Based Intrusion Detection System</h3>
+      <ul>
+        <li>Developed a rule-based IDS using the NSL-KDD dataset</li>
+        <li>Created a Flask web app with live network monitoring via Socket.IO</li>
+        <li>Designed a dashboard for intrusion alerts</li>
+      </ul>
+      <span class="tag">Python</span><span class="tag">PyShark</span><span class="tag">Flask</span><span class="tag">ML</span>
+      <div class="more">View full details →</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal from-right">
+  <h2>Skills</h2>
+  <p class="sub">Tools and technologies I work with</p>
+  <div class="skills-title">Data &amp; Analytics</div>
+  <div class="skills">
+    <div class="skill">SQL</div><div class="skill">MySQL</div><div class="skill">Power BI</div>
+    <div class="skill">MS Excel</div><div class="skill">Pandas</div><div class="skill">NumPy</div>
+    <div class="skill">Data Visualization</div><div class="skill">EDA</div><div class="skill">Statistics</div>
+  </div>
+  <div class="skills-title">Programming &amp; ML</div>
+  <div class="skills">
+    <div class="skill">Python</div><div class="skill">C</div><div class="skill">Scikit-learn</div>
+    <div class="skill">Machine Learning</div><div class="skill">Flask</div>
+  </div>
+  <div class="skills-title">Tools &amp; Other</div>
+  <div class="skills">
+    <div class="skill">PyShark</div><div class="skill">Socket.IO</div><div class="skill">Git</div>
+    <div class="skill">MS Office Suite</div><div class="skill">Cyber Security Fundamentals</div>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <h2>Internships</h2>
+  <p class="sub">Where I've gained hands-on experience</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="when">Dec 2024 — Apr 2025</div><h3>Machine Learning Intern · Purple Technologies</h3><p>Applied machine learning techniques to real-world data problems.</p></div>
+    <div class="tl-item"><div class="when">Feb 2024 — Apr 2024</div><h3>Machine Learning Intern · Black Bucks</h3><p>Worked on data analysis and machine learning tasks.</p></div>
+    <div class="tl-item"><div class="when">May 2023 — Jul 2023</div><h3>Ethical Hacking Intern · ST7 Surveillance Solutions</h3><p>Gained practical exposure to security concepts and tools.</p></div>
+  </div>
+</section>
+
+<section id="education" class="reveal from-right">
+  <h2>Education</h2>
+  <p class="sub">My academic journey</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="when">2021 — 2025</div><h3>B.Tech, Computer Science &amp; Engineering (Cyber Security)</h3><p>Ramachandra College of Engineering, Andhra Pradesh</p></div>
+    <div class="tl-item"><div class="when">2019 — 2021</div><h3>Intermediate (Class XII)</h3><p>Sri Chaitanya Junior College, Andhra Pradesh</p></div>
+    <div class="tl-item"><div class="when">2018 — 2019</div><h3>SSC (Class X)</h3><p>Sri Chaitanya School, Andhra Pradesh</p></div>
+  </div>
+</section>
+
+<section id="certifications" class="reveal from-bottom">
+  <h2>Certifications</h2>
+  <p class="sub">Extra learning and credentials</p>
+  <div class="cert-grid">
+    <div class="cert"><h3>C for Everyone: Programming Fundamentals</h3><div class="issuer">Coursera</div></div>
+    <div class="cert"><h3>SQL (Intermediate)</h3><div class="issuer">HackerRank</div></div>
+    <div class="cert"><h3>Cyber Security Certification</h3><div class="issuer">Cyberspace</div></div>
+    <div class="cert"><h3>Power BI Workshop</h3><div class="issuer">Workshop</div></div>
+  </div>
+</section>
+
+<section id="contact" class="reveal from-bottom">
+  <h2>Contact</h2>
+  <p class="sub">Let's connect</p>
+  <p>Email me at <a href="mailto:vanimireddychandansai@gmail.com" style="color:var(--accent)">vanimireddychandansai@gmail.com</a> or call <a href="tel:+919885177477" style="color:var(--accent)">+91 98851 77477</a></p>
+  <div class="socials">
+    <a href="https://linkedin.com/in/chandan-sai-vanimireddy" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<div class="modal-overlay" id="project-modal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="m-close" id="m-close" title="Close">✕</button>
+    <h2 id="m-title"></h2>
+    <div class="m-sub" id="m-sub"></div>
+    <p id="m-desc"></p>
+    <ul id="m-points"></ul>
+    <div id="m-tags"></div>
+    <div class="m-actions">
+      <a class="btn" id="m-github" href="#" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<footer>Built with n8n · <span id="year">2026</span></footer>
+<button id="top-btn" title="Back to top">↑</button>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const topBtn = document.getElementById('top-btn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 400);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Self-download: save this exact page as a standalone index.html file
+  const dlBtn = document.getElementById('download-page');
+  if (dlBtn) dlBtn.addEventListener('click', () => {
+    const blob = new Blob(['<!DOCTYPE html>' + String.fromCharCode(10) + document.documentElement.outerHTML], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  const projects = {
+    myntra: {
+      title: 'SQL Sales Analysis (Myntra DB)',
+      sub: 'Data Analysis · MySQL',
+      desc: 'An end-to-end SQL analysis of a Myntra e-commerce sales database. The project starts from raw relational tables and builds up to business-ready insights on what sells, when, and to whom.',
+      points: [
+        'Explored a multi-table e-commerce schema: orders, customers, products, and payments',
+        'Wrote complex queries using multi-table JOINs, GROUP BY, window-style aggregations, and subqueries',
+        'Identified top-selling products, categories, and brands by revenue and order volume',
+        'Analysed monthly and seasonal revenue trends to highlight peak sales periods',
+        'Segmented customers by purchase behaviour to surface high-value and repeat buyers',
+        'Translated query results into clear, decision-ready takeaways for pricing and inventory'
+      ],
+      tags: ['MySQL', 'SQL', 'Joins', 'Aggregations', 'Subqueries'],
+      github: 'https://github.com/chandansai-vanimireddy/myntra-sql-sales-analysis'
+    },
+    powerbi: {
+      title: 'Power BI Call Centre Dashboard',
+      sub: 'Data Visualization · Power BI',
+      desc: 'An interactive Power BI dashboard that gives a call centre team a single view of performance — from call volumes to individual agent results — with filters for drilling into any slice of the data.',
+      points: [
+        'Designed an interactive dashboard tracking core call-centre KPIs: call volume, resolution rate, satisfaction, and speed of answer',
+        'Analysed call resolution trends and identified bottlenecks by topic and time of day',
+        'Built agent-performance views comparing handled calls, resolution rates, and ratings per agent',
+        'Added slicers and filters for date range, agent, and topic for real-time monitoring',
+        'Used cards, charts, and matrix visuals so managers can spot issues at a glance'
+      ],
+      tags: ['Power BI', 'DAX', 'Dashboards', 'KPIs'],
+      github: 'https://github.com/chandansai-vanimireddy/powerbi-call-centre-dashboard'
+    },
+    churn: {
+      title: 'Customer Churn Analysis',
+      sub: 'Machine Learning · Python',
+      desc: 'A Python-based analysis of customer churn: understand why customers leave, which factors drive attrition, and how the business could act on those signals before losing them.',
+      points: [
+        'Cleaned and prepared customer data: handled missing values, encoded categorical features, and scaled numeric fields',
+        'Performed exploratory data analysis to profile churned vs retained customers',
+        'Identified key churn drivers — contract type, tenure, monthly charges, and service usage — using statistical methods',
+        'Built visualizations (distributions, correlations, churn-by-segment) to communicate findings clearly',
+        'Summarised actionable retention recommendations based on the highest-risk customer segments'
+      ],
+      tags: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'EDA'],
+      github: 'https://github.com/chandansai-vanimireddy/customer-churn-analysis'
+    },
+    ids: {
+      title: 'Rule-Based Intrusion Detection System',
+      sub: 'Cyber Security · Python + Flask',
+      desc: 'A rule-based network intrusion detection system with a live web dashboard. It captures network traffic in real time, evaluates packets against detection rules trained on the NSL-KDD dataset, and raises alerts the moment suspicious activity appears.',
+      points: [
+        'Developed detection rules using the NSL-KDD network-intrusion dataset',
+        'Captured live network packets with PyShark and extracted the features each rule needs',
+        'Built a Flask web application with real-time updates pushed to the browser via Socket.IO',
+        'Designed an alerts dashboard showing intrusion type, source, and severity as events happen',
+        'Combined cyber security domain knowledge with data analysis and full-stack Python skills'
+      ],
+      tags: ['Python', 'PyShark', 'Flask', 'Socket.IO', 'NSL-KDD', 'ML'],
+      github: 'https://github.com/chandansai-vanimireddy/rule-based-ids'
+    }
+  };
+
+  const overlay = document.getElementById('project-modal');
+  document.querySelectorAll('.card[data-project]').forEach(card => {
+    card.addEventListener('click', () => {
+      const p = projects[card.dataset.project];
+      if (!p) return;
+      document.getElementById('m-title').textContent = p.title;
+      document.getElementById('m-sub').textContent = p.sub;
+      document.getElementById('m-desc').textContent = p.desc;
+      document.getElementById('m-points').innerHTML = p.points.map(pt => '<li>' + pt + '</li>').join('');
+      document.getElementById('m-tags').innerHTML = p.tags.map(t => '<span class="tag">' + t + '</span>').join('');
+      document.getElementById('m-github').href = p.github;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('m-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body></html>
